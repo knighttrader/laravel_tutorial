@@ -1,33 +1,15 @@
 <!DOCTYPE html>
-<html lang="{{ app()->getLocale() }}">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
   <head>
-
-    @include('layout.head_part')
-
-
-
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <title>Laravel</title>
-
-    <link href="{{ asset('css/app.css')}}" rel="stylesheet">
-    <link href="{{ asset('css/styles.css')}}" rel="stylesheet">
-    {{-- @stack('styles') --}}
-
+    {{-- Head Section  --}} @include('layout.head_part')
   </head>
   <body>
+    {{-- Navigation Section  --}} @include('layout.nav_part')
+    {{-- Header Section --}} @include('layout.header_part')
 
-    @include('layout.nav_part')
-    @include('layout.header_part')
-    <div class="container">
-        <div class="content">
-                @yield('appContent')
-        </div>
-    </div>
-    @include('layout.footer_part')
-    @include('layout.script_part')
-
+    {{-- Body Section --}} @yield('content')
+    
+    {{-- Footer Section --}} @include('layout.footer_part')
+    {{-- Script Section --}} @include('layout.script_part')
   </body>
 </html>
